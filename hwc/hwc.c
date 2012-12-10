@@ -1994,6 +1994,15 @@ static int hwc_set(struct hwc_composer_device_1 *dev,
                     }
                 }
             }
+            if (list) {
+                if (hwc_dev->counts.framebuffer) {
+                    /* Layer with HWC_FRAMEBUFFER_TARGET should be last in the list. The buffer handle
+                     * is updated by SurfaceFlinger after prepare() call, so FB slot has to be updated
+                     * in set().
+                     */
+                    hwc_dev->buffers[0] = list->hwLayers[list->numHwLayers - 1].handle;
+                }
+            }
         }
 
         //dump_dsscomp(dsscomp);
