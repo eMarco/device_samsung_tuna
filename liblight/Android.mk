@@ -28,6 +28,8 @@ LOCAL_SHARED_LIBRARIES := \
 
 LOCAL_MODULE := lights.tuna
 
+LOCAL_CFLAGS := -I$(LOCAL_PATH)/../kernel-headers
+
 LOCAL_MODULE_TAGS := optional
 
 include $(BUILD_SHARED_LIBRARY)
