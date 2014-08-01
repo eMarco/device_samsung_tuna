@@ -27,6 +27,9 @@ endif
 
 DEVICE_PACKAGE_OVERLAYS := device/samsung/tuna/overlay
 
+# Setup custom omap4xxx defines
+BOARD_USE_CUSTOM_LIBION := true
+
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
 # we do this little trick to fall back to the hdpi version
@@ -36,10 +39,10 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES := \
 	hwcomposer.tuna \
+	camera.tuna \
 	lights.tuna \
 	charger \
 	charger_res_images
-
 # Torch
 PRODUCT_PACKAGES += \
     Torch
@@ -202,6 +205,9 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
+	com.ti.omap_enhancement=true \
+	omap.enhancement=true \
+	#ro.camera.video_size=1280x720 \
 	ro.hwui.disable_scissor_opt=true
 
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -223,6 +229,19 @@ PRODUCT_PACKAGES += \
 
 # TI OMAP4
 PRODUCT_PACKAGES += \
+	libdomx \
+	libOMX_Core \
+	libOMX.TI.DUCATI1.VIDEO.H264E \
+	libOMX.TI.DUCATI1.VIDEO.H264SVCE \
+	libOMX.TI.DUCATI1.VIDEO.VC1E \
+	libOMX.TI.DUCATI1.VIDEO.MPEG4E \
+	libOMX.TI.DUCATI1.VIDEO.DECODER \
+	libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
+	libOMX.TI.DUCATI1.VIDEO.CAMERA \
+	libOMX.TI.DUCATI1.MISC.SAMPLE \
+	libstagefrighthw \
+	libI420colorconvert \
+	libtiutils_custom \
 	libion_ti \
 	smc_pa_ctrl \
 	tf_daemon \
