@@ -213,8 +213,8 @@ PRODUCT_PACKAGES += \
 	setup_fs
 
 # Don't preload EGL drivers in Zygote at boot time
-PRODUCT_PROPERTY_OVERRIDES += \
-        ro.zygote.disable_gl_preload=true
+#PRODUCT_PROPERTY_OVERRIDES += \
+#        ro.zygote.disable_gl_preload=true
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
