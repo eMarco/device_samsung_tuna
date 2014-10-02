@@ -39,13 +39,15 @@ PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES := \
 	hwcomposer.tuna \
-	camera.tuna \
 	lights.tuna \
 	charger \
 	charger_res_images
 # Torch
 PRODUCT_PACKAGES += \
     Torch
+
+#PRODUCT_PACKAGES += \
+	camera.tuna
 
 PRODUCT_PACKAGES += \
 	sensors.tuna \
@@ -205,9 +207,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	com.ti.omap_enhancement=true \
-	omap.enhancement=true \
-	#ro.camera.video_size=1280x720 \
 	ro.hwui.disable_scissor_opt=true
 
 PRODUCT_CHARACTERISTICS := nosdcard
@@ -229,6 +228,12 @@ PRODUCT_PACKAGES += \
 
 # TI OMAP4
 PRODUCT_PACKAGES += \
+	libion_ti \
+	smc_pa_ctrl \
+	tf_daemon \
+	libtf_crypto_sst
+
+#PRODUCT_PACKAGES += \
 	libdomx \
 	libOMX_Core \
 	libOMX.TI.DUCATI1.VIDEO.H264E \
@@ -241,16 +246,12 @@ PRODUCT_PACKAGES += \
 	libOMX.TI.DUCATI1.MISC.SAMPLE \
 	libstagefrighthw \
 	libI420colorconvert \
-	libtiutils_custom \
-	libion_ti \
-	smc_pa_ctrl \
-	tf_daemon \
-	libtf_crypto_sst
+	libtiutils_custom
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
-#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
+$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
 #$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 $(call inherit-product-if-exists, vendor/samsung/tuna/device-vendor.mk)
 
