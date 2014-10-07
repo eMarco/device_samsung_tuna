@@ -32,6 +32,7 @@ struct tuna_power_module {
     pthread_mutex_t lock;
     int boostpulse_fd;
     int boostpulse_warned;
+    int inited;
 };
 
 static void sysfs_write(char *path, char *s)
@@ -57,6 +58,15 @@ static void sysfs_write(char *path, char *s)
 
 static void tuna_power_init(struct power_module *module)
 {
+    struct tuna_power_module *tuna = (struct tuna_power_module *) module;
+    int len;
+    char buf[MAX_BUF_SZ];
+
+    if (!tuna->inited) {
+        return;
+    }
+   
+
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/timer_rate",
                 "20000");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/min_sample_time",
@@ -69,6 +79,9 @@ static void tuna_power_init(struct power_module *module)
                 "99");
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/above_hispeed_delay",
                 "80000");
+
+    ALOGI("Initialized successfully");
+    tuna->inited = 1;
 }
 
 static int boostpulse_open(struct tuna_power_module *tuna)
@@ -109,6 +122,10 @@ static void tuna_power_hint(struct power_module *module, power_hint_t hint,
     struct tuna_power_module *tuna = (struct tuna_power_module *) module;
     char buf[80];
     int len;
+
+    if (!tuna->inited) {
+        return;
+    }
 
     switch (hint) {
     case POWER_HINT_INTERACTION:
