@@ -244,23 +244,14 @@ PRODUCT_PACKAGES += \
 	libOMX.TI.DUCATI1.VIDEO.CAMERA \
 	libOMX.TI.DUCATI1.MISC.SAMPLE \
 	libstagefrighthw \
-        libI420colorconvert \
-	libtiutils_custom
-
-#PRODUCT_PACKAGES += \
-	libdomx \
-	libOMX_Core \
-	libOMX.TI.DUCATI1.VIDEO.H264E \
-	libOMX.TI.DUCATI1.VIDEO.H264SVCE \
-	libOMX.TI.DUCATI1.VIDEO.VC1E \
-	libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-	libOMX.TI.DUCATI1.VIDEO.DECODER \
-	libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-	libOMX.TI.DUCATI1.VIDEO.CAMERA \
-	libOMX.TI.DUCATI1.MISC.SAMPLE \
-	libstagefrighthw \
 	libI420colorconvert \
 	libtiutils_custom
+
+# WiFi stuff isn't being included in L apparently?
+PRODUCT_PACKAGES += \
+	hostapd \
+	wpa_supplicant \
+	wpa_supplicant.conf
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 
