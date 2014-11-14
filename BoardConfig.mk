@@ -35,8 +35,11 @@ TARGET_CPU_VARIANT := cortex-a9
 
 TARGET_NO_BOOTLOADER := true
 
+# Kernel
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
+TARGET_KERNEL_CONFIG := tuna_defconfig
+TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
 # Define kernel config for inline building
 TARGET_KERNEL_CONFIG := slim_tuna_defconfig
