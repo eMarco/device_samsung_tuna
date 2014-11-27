@@ -41,7 +41,6 @@ PRODUCT_PACKAGES := \
 	hwcomposer.tuna \
 	camera.tuna \
 	lights.tuna \
-	charger \
 	charger_res_images
 # Torch
 PRODUCT_PACKAGES += \
