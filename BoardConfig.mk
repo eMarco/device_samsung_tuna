@@ -208,4 +208,9 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
         genfs_contexts \
-        file_contexts< 
+	file_contexts \
+        fRom.te \
+        init.te \
+        mediaserver.te \
+        pvrsrvinit.te \
+        rild.te
