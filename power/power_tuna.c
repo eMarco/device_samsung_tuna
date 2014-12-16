@@ -59,13 +59,6 @@ static void sysfs_write(char *path, char *s)
 static void tuna_power_init(struct power_module *module)
 {
     struct tuna_power_module *tuna = (struct tuna_power_module *) module;
-    int len;
-    char buf[MAX_BUF_SZ];
-
-    if (!tuna->inited) {
-        return;
-    }
-   
 
     sysfs_write("/sys/devices/system/cpu/cpufreq/interactive/timer_rate",
                 "20000");
@@ -108,6 +101,16 @@ static int boostpulse_open(struct tuna_power_module *tuna)
 
 static void tuna_power_set_interactive(struct power_module *module, int on)
 {
+    /* //We do not need this atm
+    
+    
+    truct tuna_power_module *tuna = (struct tuna_power_module *) module;
+    int len;
+
+    if (!tuna->inited) {
+        return;
+    }*/
+    
     /*
      * Lower maximum frequency when screen is off.  CPU 0 and 1 share a
      * cpufreq policy.
