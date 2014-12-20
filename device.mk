@@ -71,18 +71,10 @@ PRODUCT_PACKAGES += \
 #	keystore.tuna
 
 PRODUCT_COPY_FILES += \
-<<<<<<< HEAD
-	$(LOCAL_KERNEL):kernel \
 	device/samsung/tuna/init.tuna.rc:root/init.tuna.rc \
 	device/samsung/tuna/init.tuna.usb.rc:root/init.tuna.usb.rc \
 	device/samsung/tuna/fstab.tuna:root/fstab.tuna \
 	device/samsung/tuna/ueventd.tuna.rc:root/ueventd.tuna.rc \
-=======
-	device/samsung/tuna/rootdir/init.tuna.rc:root/init.tuna.rc \
-	device/samsung/tuna/rootdir/init.tuna.usb.rc:root/init.tuna.usb.rc \
-	device/samsung/tuna/rootdir/fstab.tuna:root/fstab.tuna \
-	device/samsung/tuna/rootdir/ueventd.tuna.rc:root/ueventd.tuna.rc \
->>>>>>> 9679fc4... tuna: remove outdated prebuilt kernel, setup inline kernel building
 	device/samsung/tuna/media_profiles.xml:system/etc/media_profiles.xml \
 	device/samsung/tuna/media_codecs.xml:system/etc/media_codecs.xml \
 	device/samsung/tuna/gps.conf:system/etc/gps.conf
