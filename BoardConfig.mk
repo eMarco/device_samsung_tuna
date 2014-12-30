@@ -14,6 +14,8 @@
 # limitations under the License.
 #
 
+DEVICE_FOLDER := device/samsung/tuna
+
 # This variable is set first, so it can be overridden
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := true
@@ -22,8 +24,8 @@ USE_CAMERA_STUB := true
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
 # Default values, if not overridden else where.
-TARGET_BOARD_INFO_FILE ?= device/samsung/tuna/board-info.txt
-BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= device/samsung/tuna/bluetooth
+TARGET_BOARD_INFO_FILE ?= $(DEVICE_FOLDER)/board-info.txt
+BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR ?= $(DEVICE_FOLDER)/bluetooth
 
 TARGET_CPU_ABI := armeabi-v7a
 TARGET_CPU_ABI2 := armeabi
@@ -46,7 +48,7 @@ TARGET_NO_RADIOIMAGE := true
 TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 
-BOARD_EGL_CFG := device/samsung/tuna/egl.cfg
+BOARD_EGL_CFG := $(DEVICE_FOLDER)/egl.cfg
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 BOARD_USE_TI_DUCATI_H264_PROFILE := true
@@ -74,12 +76,12 @@ TARGET_RECOVERY_UI_LIB := librecovery_ui_tuna
 
 # device-specific extensions to the updater binary
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
-TARGET_RELEASETOOLS_EXTENSIONS := device/samsung/tuna
+TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_FOLDER)
 
 # use the new recovery.fstab format
 RECOVERY_FSTAB_VERSION = 2
 
-TARGET_RECOVERY_FSTAB = device/samsung/tuna/fstab.tuna
+TARGET_RECOVERY_FSTAB = $(DEVICE_FOLDER)/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
 BOARD_SYSTEMIMAGE_PARTITION_SIZE := 685768704
 BOARD_USERDATAIMAGE_PARTITION_SIZE := 14539537408
@@ -113,7 +115,7 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.tuna
 BOARD_USES_SECURE_SERVICES := true
 
 BOARD_SEPOLICY_DIRS += \
-        device/samsung/tuna/sepolicy
+        $(DEVICE_FOLDER)/sepolicy
 
 BOARD_SEPOLICY_UNION += \
         genfs_contexts \
