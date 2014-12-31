@@ -27,8 +27,7 @@ LOCAL_MODULE_TAGS := optional
 
 LOCAL_CFLAGS := -DLOG_TAG=\"Sensors\"
 
-#LOCAL_C_INCLUDES += hardware/invensense/libsensors hardware/invensense/60xx/libsensors
-LOCAL_C_INCLUDES += hardware/invensense/60xx/libsensors
+LOCAL_C_INCLUDES += hardware/invensense/libsensors hardware/invensense/60xx/libsensors
 
 LOCAL_SRC_FILES := \
 	sensors.cpp \
