@@ -89,7 +89,6 @@ TARGET_USE_PAN_DISPLAY := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-TARGET_RECOVERY_UI_LIB := librecovery_ui_tuna
 
 # device-specific extensions to the updater binary
 # inexplicable build errors with Lollipop...
@@ -136,4 +135,3 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.tuna
 
 BOARD_SEPOLICY_DIRS += \
         $(DEVICE_FOLDER)/sepolicy
-
