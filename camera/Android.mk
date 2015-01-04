@@ -64,7 +64,8 @@ LOCAL_C_INCLUDES += \
 	frameworks/native/include/media/hardware \
 	frameworks/native/include/media/openmax \
 	external/jpeg \
-	external/jhead
+	external/jhead \
+	system/media/camera/include
 
 LOCAL_SHARED_LIBRARIES := \
 	libui \
@@ -114,7 +115,8 @@ LOCAL_C_INCLUDES += \
 	$(DEVICE_FOLDER)/libion_ti \
 	frameworks/base/include/ui \
 	frameworks/base/include/utils \
-	frameworks/base/include/media/stagefright/openmax
+	frameworks/base/include/media/stagefright/openmax \
+	system/media/camera/include
 
 LOCAL_SHARED_LIBRARIES := \
 	libui \
