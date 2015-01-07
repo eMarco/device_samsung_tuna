@@ -265,7 +265,7 @@ PRODUCT_PACKAGES += \
 	libOMX.TI.DUCATI1.MISC.SAMPLE \
 	libstagefrighthw \
 	libI420colorconvert \
-	libtiutils_custom
+	libtiutils_$(TARGET_BOOTLOADER_BOARD_NAME)
 
 PRODUCT_PACKAGES += \
 	libwpa_client \
