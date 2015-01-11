@@ -85,6 +85,9 @@ COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 # libwvm needs this, among other things
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
 
+#We need this to download Camera Calibration files through fRom.
+TARGET_ENABLE_NON_PIE_SUPPORT := true
+
 # set if the target supports FBIO_WAITFORVSYNC
 TARGET_HAS_WAITFORVSYNC := true
 
@@ -94,6 +97,7 @@ TARGET_USE_PAN_DISPLAY := true
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
 TARGET_NEEDS_BIONIC_MD5 := true
+
 
 TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
 TARGET_RECOVERY_UI_LIB := librecovery_ui_tuna
