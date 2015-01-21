@@ -146,7 +146,7 @@ BOARD_SEPOLICY_DIRS += \
 BOARD_SEPOLICY_UNION += \
         genfs_contexts \
 	file_contexts \
-        fRom.te \
+        dumpdcc.te \
         init.te \
         mediaserver.te \
         pvrsrvinit.te \
@@ -155,4 +155,5 @@ BOARD_SEPOLICY_UNION += \
 	sdcardd.te \
 	servicemanager.te \
 	system_server.te \
-	zygote.te
+	zygote.te \
+	vold.te

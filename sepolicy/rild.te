@@ -7,3 +7,4 @@ allow rild system_data_file:file create_file_perms;
 #allow rild system_data_file:dir { add_name write };
 #allow rild system_data_file:file { write append create };
 allow rild self:process execmem;
+allow rild block_device:dir { search };
