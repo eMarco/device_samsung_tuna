@@ -20,30 +20,37 @@ DEVICE_FOLDER := device/samsung/tuna
 # by BoardConfigVendor.mk
 USE_CAMERA_STUB := true
 
-PRODUCT_VENDOR_KERNEL_HEADERS := $(DEVICE_FOLDER)/kernel-headers
-
-TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_FOLDER)/include
-
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
+# inherit from omap4-next
+-include hardware/ti/omap4-next/BoardConfigCommon.mk
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/tuna/BoardConfigVendor.mk
+
+TARGET_FPU_VARIANT := neon-fp16
+TARGET_BOARD_OMAP_CPU := 4460
+CAMERAHAL_TUNA := true
+
+BOARD_USE_TI_DOMX_LOW_SECURE_HEAP := false
+OMAP_ENHANCEMENT_MULTIGPU := false
+TARGET_BOOTANIMATION_PRELOAD := true
+TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Default values, if not overridden else where.
 TARGET_BOARD_INFO_FILE := $(DEVICE_FOLDER)/board-info.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_FOLDER)/bluetooth
 
-TARGET_BOARD_OMAP_CPU := 4460
-TARGET_CPU_ABI := armeabi-v7a
-TARGET_CPU_ABI2 := armeabi
-TARGET_CPU_SMP := true
-TARGET_ARCH := arm
-TARGET_ARCH_VARIANT := armv7-a-neon
-TARGET_BOARD_PLATFORM := omap4
-TARGET_CPU_VARIANT := cortex-a9
+# For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
+#OMAP_TUNA := true
+#COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
+# Franken-domx
+#BOARD_USE_TI_CUSTOM_DOMX := true
+#TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_FOLDER)/domx/omx_core/inc
+#TI_CUSTOM_DOMX_PATH := $(DEVICE_FOLDER)/domx
+#DOMX_PATH := $(DEVICE_FOLDER)/domx
+# Setup custom omap4xxx defines
+#BOARD_USE_CUSTOM_LIBION := true
+#TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_FOLDER)/include
 
-TARGET_NO_BOOTLOADER := true
 
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
@@ -52,35 +59,22 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_KERNEL_CONFIG := slim_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
+
+TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
-TARGET_BOARD_PLATFORM := omap4
 TARGET_BOOTLOADER_BOARD_NAME := tuna
 
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 TARGET_TI_HWC_HDMI_DISABLED := true
 
-# Franken-domx
-BOARD_USE_TI_CUSTOM_DOMX := true
-TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_FOLDER)/domx/omx_core/inc
-TI_CUSTOM_DOMX_PATH := $(DEVICE_FOLDER)/domx
-DOMX_PATH := $(DEVICE_FOLDER)/domx
-COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
-
-BOARD_USE_TI_DUCATI_H264_PROFILE := true
-
-# For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
-OMAP_TUNA := true
 
 # Include HDCP keys
 BOARD_CREATE_TUNA_HDCP_KEYS_SYMLINK := true
 
 #BOARD_USES_HGL := true
 #BOARD_USES_OVERLAY := true
-USE_OPENGL_RENDERER := true
 
-# Force the screenshot path to CPU consumer
-COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 # libwvm needs this, among other things
 COMMON_GLOBAL_CFLAGS += -DNEEDS_VECTORIMPL_SYMBOLS
@@ -131,14 +125,9 @@ WIFI_DRIVER_FW_PATH_AP      := "/vendor/firmware/fw_bcmdhd_apsta.bin"
 BOARD_HAVE_BLUETOOTH := true
 BOARD_HAVE_BLUETOOTH_BCM := true
 
-# Boot animation
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
-TARGET_BOOTANIMATION_USE_RGB565 := true
 
 BOARD_HAL_STATIC_LIBRARIES := libdumpstate.tuna
 
-BOARD_USES_SECURE_SERVICES := true
 
 BOARD_SEPOLICY_DIRS += \
         $(DEVICE_FOLDER)/sepolicy
@@ -157,3 +146,4 @@ BOARD_SEPOLICY_UNION += \
 	system_server.te \
 	zygote.te \
 	vold.te
+

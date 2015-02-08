@@ -27,8 +27,6 @@ endif
 
 DEVICE_PACKAGE_OVERLAYS := device/samsung/tuna/overlay
 
-# Setup custom omap4xxx defines
-BOARD_USE_CUSTOM_LIBION := true
 
 # This device is xhdpi.  However the platform doesn't
 # currently contain all of the bitmaps at xhdpi density so
@@ -37,14 +35,12 @@ BOARD_USE_CUSTOM_LIBION := true
 PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
-PRODUCT_PACKAGES := \
-	hwcomposer.tuna \
-	camera.tuna \
+PRODUCT_PACKAGES = \
 	lights.tuna \
 	charger_res_images
 # Torch
 PRODUCT_PACKAGES += \
-    Torch
+	Torch
 
 PRODUCT_PACKAGES += \
 	sensors.tuna \
@@ -61,10 +57,6 @@ PRODUCT_PACKAGES += \
 # viewed on the current OS.
 PRODUCT_PACKAGES += \
 	libskia_legacy
-
-#symlinks
-PRODUCT_PACKAGES += \
-	libion.so
 
 # Audio
 PRODUCT_PACKAGES += \
@@ -126,6 +118,15 @@ PRODUCT_PACKAGES += \
         Nfc \
         Tag
 
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opengles.version=131072 \
+	com.ti.omap_enhancement=true \
+	omap.enhancement=true \
+	persist.sys.usb.config=mtp,adb \
+	persist.sys.root_access=3 \
+	media.stagefright.cache-params=18432/20480/15 \
+	ro.ksm.default=1
+
 # LED brightness property
 PRODUCT_PROPERTY_OVERRIDES += \
         persist.sys.led-brightness=31
@@ -176,16 +177,16 @@ PRODUCT_COPY_FILES += \
 
 # Melfas touchscreen firmware
 PRODUCT_COPY_FILES += \
-    device/samsung/tuna/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
-    device/samsung/tuna/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
+	device/samsung/tuna/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
+	device/samsung/tuna/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
 
 # Portrait dock image
 PRODUCT_COPY_FILES += \
-    device/samsung/tuna/dock.png:system/vendor/res/images/dock/dock.png
+	device/samsung/tuna/dock.png:system/vendor/res/images/dock/dock.png
 
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
-packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
+	packages/apps/Nfc/migrate_nfc.txt:system/etc/updatecmds/migrate_nfc.txt)
 
 # file that declares the MIFARE NFC constant
 PRODUCT_COPY_FILES += \
@@ -207,9 +208,6 @@ PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.opengles.version=131072
-
-PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -226,7 +224,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
 # Show selinux status in Settings-About phone
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.build.selinux=enforcing
-
 
 # Use awesome player for now
 PRODUCT_PROPERTY_OVERRIDES += \
@@ -256,28 +253,6 @@ PRODUCT_PACKAGES += \
 #PRODUCT_PROPERTY_OVERRIDES += \
 #        ro.zygote.disable_gl_preload=true
 
-# TI OMAP4
-PRODUCT_PACKAGES += \
-	libion_ti \
-	smc_pa_ctrl \
-	tf_daemon \
-	libtf_crypto_sst \
-	libcorkscrew \
-	pvrsrvinit
-
-PRODUCT_PACKAGES += \
-	libdomx \
-	libOMX_Core \
-	libOMX.TI.DUCATI1.VIDEO.H264E \
-	libOMX.TI.DUCATI1.VIDEO.MPEG4E \
-	libOMX.TI.DUCATI1.VIDEO.DECODER \
-	libOMX.TI.DUCATI1.VIDEO.DECODER.secure \
-	libOMX.TI.DUCATI1.VIDEO.CAMERA \
-	libOMX.TI.DUCATI1.MISC.SAMPLE \
-	libstagefrighthw \
-	libI420colorconvert \
-	libtiutils_$(TARGET_BOOTLOADER_BOARD_NAME)
-
 PRODUCT_PACKAGES += \
 	libwpa_client \
 	hostapd \
@@ -287,14 +262,14 @@ PRODUCT_PACKAGES += \
 
 # DCC
 PRODUCT_PACKAGES += \
-    dumpdcc
+	dumpdcc
+
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
-
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
-#$(call inherit-product, hardware/ti/omap4xxx/omap4.mk)
+$(call inherit-product, hardware/ti/omap4-next/omap4.mk)
 #$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
-$(call inherit-product-if-exists, vendor/samsung/tuna/device-vendor.mk)
+#$(call inherit-product-if-exists, vendor/samsung/tuna/tuna-vendor.mk)
 
 BOARD_WLAN_DEVICE_REV := bcm4330_b2
 WIFI_BAND             := 802_11_ABG
