@@ -62,6 +62,8 @@ BOARD_KERNEL_BASE := 0x80000000
 TARGET_KERNEL_CONFIG := slim_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna
 
+# Use dlmalloc
+MALLOC_IMPL := dlmalloc
 
 TARGET_NO_BOOTLOADER := true
 TARGET_NO_RADIOIMAGE := true
