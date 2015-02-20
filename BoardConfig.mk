@@ -21,27 +21,30 @@ DEVICE_FOLDER := device/samsung/tuna
 USE_CAMERA_STUB := true
 
 # inherit from omap4-next
--include hardware/ti/omap4-next/BoardConfigCommon.mk
+-include hardware/ti/omap4/BoardConfigCommon.mk
 
 # Use the non-open-source parts, if they're present
 -include vendor/samsung/tuna/BoardConfigVendor.mk
 
+TARGET_BOARD_PLATFORM := omap4
 TARGET_FPU_VARIANT := neon-fp16
 TARGET_BOARD_OMAP_CPU := 4460
 CAMERAHAL_TUNA := true
+TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
+
+# Force the screenshot path to CPU consumer
+COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
 BOARD_USE_TI_DOMX_LOW_SECURE_HEAP := false
 OMAP_ENHANCEMENT_MULTIGPU := false
-TARGET_BOOTANIMATION_PRELOAD := true
-TARGET_BOOTANIMATION_TEXTURE_CACHE := true
 
 # Default values, if not overridden else where.
 TARGET_BOARD_INFO_FILE := $(DEVICE_FOLDER)/board-info.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_FOLDER)/bluetooth
 
 # For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
-#OMAP_TUNA := true
-#COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
+OMAP_TUNA := true
+COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
 # Franken-domx
 #BOARD_USE_TI_CUSTOM_DOMX := true
 #TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_FOLDER)/domx/omx_core/inc

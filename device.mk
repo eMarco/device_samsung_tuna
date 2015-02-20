@@ -31,20 +31,12 @@ PRODUCT_AAPT_CONFIG := normal hdpi xhdpi
 PRODUCT_AAPT_PREF_CONFIG := xhdpi
 
 PRODUCT_PACKAGES = \
+	camera.tuna \
 	lights.tuna \
-	charger_res_images
-# Torch
-PRODUCT_PACKAGES += \
-	Torch
-
-PRODUCT_PACKAGES += \
+	charger_res_images \
 	sensors.tuna \
-	libinvensense_mpl
-
-PRODUCT_PACKAGES += \
-	nfc.tuna
-
-PRODUCT_PACKAGES += \
+	libinvensense_mpl \
+	nfc.tuna \
 	power.tuna
 
 # Support for Browser's saved page feature. This allows
@@ -113,12 +105,6 @@ PRODUCT_PACKAGES += \
         Tag
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.opengles.version=131072 \
-	com.ti.omap_enhancement=true \
-	omap.enhancement=true \
-	persist.sys.usb.config=mtp,adb \
-	persist.sys.root_access=3 \
-	media.stagefright.cache-params=18432/20480/15 \
 	ro.ksm.default=1
 
 # LED brightness property
@@ -261,7 +247,7 @@ PRODUCT_PACKAGES += \
 
 $(call inherit-product, frameworks/native/build/phone-xhdpi-1024-dalvik-heap.mk)
 $(call inherit-product-if-exists, vendor/nxp/pn544/nxp-pn544-fw-vendor.mk)
-$(call inherit-product, hardware/ti/omap4-next/omap4.mk)
+$(call inherit-product, hardware/ti/omap4/omap4.mk)
 #$(call inherit-product-if-exists, vendor/ti/proprietary/omap4/ti-omap4-vendor.mk)
 #$(call inherit-product-if-exists, vendor/samsung/tuna/tuna-vendor.mk)
 
