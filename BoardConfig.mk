@@ -35,7 +35,7 @@ TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
 # Force the screenshot path to CPU consumer
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
-BOARD_USE_TI_DOMX_LOW_SECURE_HEAP := false
+#BOARD_USE_TI_DOMX_LOW_SECURE_HEAP := false
 OMAP_ENHANCEMENT_MULTIGPU := false
 
 # Default values, if not overridden else where.
