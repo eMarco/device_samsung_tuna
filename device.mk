@@ -205,6 +205,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	ro.build.selinux=enforcing
 
+#Enable OpenGLESv2
+PRODUCT_PROPERTY_OVERRIDES += \
+	ro.opengles.version=131072
+
 # Use awesome player for now
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.media.use-awesome=true
