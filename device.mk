@@ -88,6 +88,7 @@ PRODUCT_COPY_FILES += \
 	$(DEVICE_FOLDER)/rootdir/init.tuna.usb.rc:root/init.tuna.usb.rc \
 	$(DEVICE_FOLDER)/rootdir/fstab.tuna:root/fstab.tuna \
 	$(DEVICE_FOLDER)/rootdir/ueventd.tuna.rc:root/ueventd.tuna.rc \
+	$(DEVICE_FOLDER)/recovery/twrp.fstab:recovery/root/etc/twrp.fstab \
 	$(DEVICE_FOLDER)/media_profiles.xml:system/etc/media_profiles.xml \
 	$(DEVICE_FOLDER)/media_codecs.xml:system/etc/media_codecs.xml \
 	$(DEVICE_FOLDER)/gps.conf:system/etc/gps.conf

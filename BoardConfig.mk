@@ -88,8 +88,6 @@ TARGET_USE_PAN_DISPLAY := true
 
 TARGET_RUNNING_WITHOUT_SYNC_FRAMEWORK := true
 
-TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
-
 # device-specific extensions to the updater binary
 # inexplicable build errors with Lollipop...
 TARGET_RECOVERY_UPDATER_LIBS += librecovery_updater_tuna
@@ -98,7 +96,6 @@ TARGET_RELEASETOOLS_EXTENSIONS := $(DEVICE_FOLDER)
 # use the new recovery.fstab format
 RECOVERY_FSTAB_VERSION = 2
 
-TARGET_RECOVERY_FSTAB = $(DEVICE_FOLDER)/rootdir/fstab.tuna
 TARGET_USERIMAGES_USE_EXT4 := true
 TARGET_USERIMAGES_USE_F2FS := true
 BOARD_BOOTIMAGE_PARTITION_SIZE := 8388608
@@ -135,3 +132,33 @@ BOARD_HAL_STATIC_LIBRARIES := libdumpstate.tuna
 
 BOARD_SEPOLICY_DIRS += \
         $(DEVICE_FOLDER)/sepolicy
+
+# Recovery
+TARGET_RECOVERY_FSTAB = $(DEVICE_FOLDER)/rootdir/fstab.tuna
+TARGET_RECOVERY_PIXEL_FORMAT := "BGRA_8888"
+
+# TWRP
+TW_THEME := portrait_hdpi
+RECOVERY_SDCARD_ON_DATA := true
+RECOVERY_GRAPHICS_USE_LINELENGTH := true
+BOARD_HAS_NO_REAL_SDCARD := true
+TW_INCLUDE_JB_CRYPTO := true
+TW_CRYPTO_FS_TYPE := "ext4"
+TW_CRYPTO_REAL_BLKDEV := "/dev/block/platform/omap/omap_hsmmc.0/by-name/userdata"
+TW_CRYPTO_MNT_POINT := "/data"
+TW_CRYPTO_FS_OPTIONS := "nomblk_io_submit,errors=panic"
+TW_CRYPTO_FS_FLAGS := "0x00000406"
+TW_CRYPTO_KEY_LOC := "/dev/block/platform/omap/omap_hsmmc.0/by-name/metadata"
+SP1_NAME := "efs"
+SP1_BACKUP_METHOD := files
+SP1_MOUNTABLE := 1
+TW_FLASH_FROM_STORAGE := true
+TW_NO_USB_STORAGE := true
+TW_NO_SCREEN_BLANK := true
+TW_INTERNAL_STORAGE_PATH := "/data/media"
+TW_INTERNAL_STORAGE_MOUNT_POINT := "data"
+TW_EXTERNAL_STORAGE_PATH := "/usb-otg"
+TW_EXTERNAL_STORAGE_MOUNT_POINT := "usb-otg"
+TW_MAX_BRIGHTNESS := 255
+TW_BRIGHTNESS_PATH := /sys/class/backlight/s6e8aa0/brightness
+TW_CUSTOM_CPU_TEMP_PATH := /sys/devices/platform/omap/omap_temp_sensor.0/temperature
