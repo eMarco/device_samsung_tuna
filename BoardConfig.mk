@@ -35,25 +35,11 @@ TI_CAMERAHAL_USES_LEGACY_DOMX_DCC := true
 # Force the screenshot path to CPU consumer
 COMMON_GLOBAL_CFLAGS += -DFORCE_SCREENSHOT_CPU_PATH
 
-#BOARD_USE_TI_DOMX_LOW_SECURE_HEAP := false
 OMAP_ENHANCEMENT_MULTIGPU := false
 
 # Default values, if not overridden else where.
 TARGET_BOARD_INFO_FILE := $(DEVICE_FOLDER)/board-info.txt
 BOARD_BLUETOOTH_BDROID_BUILDCFG_INCLUDE_DIR := $(DEVICE_FOLDER)/bluetooth
-
-# For enabling some things that are OMAP_ENHANCEMENT's and are applicable to tuna...
-OMAP_TUNA := true
-COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
-# Franken-domx
-#BOARD_USE_TI_CUSTOM_DOMX := true
-#TARGET_SPECIFIC_HEADER_PATH += $(DEVICE_FOLDER)/domx/omx_core/inc
-#TI_CUSTOM_DOMX_PATH := $(DEVICE_FOLDER)/domx
-#DOMX_PATH := $(DEVICE_FOLDER)/domx
-# Setup custom omap4xxx defines
-#BOARD_USE_CUSTOM_LIBION := true
-#TARGET_SPECIFIC_HEADER_PATH := $(DEVICE_FOLDER)/include
-
 
 BOARD_KERNEL_BASE := 0x80000000
 # BOARD_KERNEL_CMDLINE :=
@@ -72,7 +58,6 @@ TARGET_BOOTLOADER_BOARD_NAME := tuna
 BOARD_EGL_WORKAROUND_BUG_10194508 := true
 
 TARGET_TI_HWC_HDMI_DISABLED := true
-
 
 # Include HDCP keys
 BOARD_CREATE_TUNA_HDCP_KEYS_SYMLINK := true
@@ -142,16 +127,16 @@ BOARD_SEPOLICY_DIRS += \
 
 BOARD_SEPOLICY_UNION += \
         genfs_contexts \
-	file_contexts \
+        file_contexts \
         dumpdcc.te \
         init.te \
         mediaserver.te \
         pvrsrvinit.te \
         rild.te \
-	bluetooth.te \
-	sdcardd.te \
-	servicemanager.te \
-	system_server.te \
-	zygote.te \
-	vold.te
+        bluetooth.te \
+        sdcardd.te \
+        servicemanager.te \
+        system_server.te \
+        zygote.te \
+        vold.te
 
