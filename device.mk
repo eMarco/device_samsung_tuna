@@ -220,6 +220,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
 PRODUCT_PROPERTY_OVERRIDES += \
 	persist.sys.media.use-awesome=true
 
+# Disable VFR support for encoders
+PRODUCT_PROPERTY_OVERRIDES += \
+	debug.vfr.enable=0
+
 PRODUCT_CHARACTERISTICS := nosdcard
 
 PRODUCT_TAGS += dalvik.gc.type-precise
