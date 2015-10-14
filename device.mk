@@ -19,8 +19,8 @@
 #
 # Everything in this directory will become public
 
-
-DEVICE_PACKAGE_OVERLAYS := device/samsung/tuna/overlay
+DEVICE_FOLDER := device/samsung/tuna
+DEVICE_PACKAGE_OVERLAYS := $(DEVICE_FOLDER)/overlay
 
 
 # This device is xhdpi.  However the platform doesn't
@@ -58,14 +58,14 @@ PRODUCT_PACKAGES += \
 
 ifeq ($(TARGET_TUNA_AUDIO_HDMI),true)
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/audio/policy/audio_policy.hdmi.conf:system/etc/audio_policy.conf
+	$(DEVICE_FOLDER)/audio/policy/audio_policy.hdmi.conf:system/etc/audio_policy.conf
 else
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/audio/policy/audio_policy.default.conf:system/etc/audio_policy.conf
+	$(DEVICE_FOLDER)/audio/policy/audio_policy.default.conf:system/etc/audio_policy.conf
 endif
 
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/audio_effects.conf:system/vendor/etc/audio_effects.conf \
+	$(DEVICE_FOLDER)/audio_effects.conf:system/vendor/etc/audio_effects.conf \
 	frameworks/av/media/libstagefright/data/media_codecs_google_audio.xml:system/etc/media_codecs_google_audio.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_telephony.xml:system/etc/media_codecs_google_telephony.xml \
 	frameworks/av/media/libstagefright/data/media_codecs_google_video.xml:system/etc/media_codecs_google_video.xml
@@ -83,13 +83,13 @@ PRODUCT_PACKAGES += \
 #	keystore.tuna
 
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/init.tuna.rc:root/init.tuna.rc \
-	device/samsung/tuna/init.tuna.usb.rc:root/init.tuna.usb.rc \
-	device/samsung/tuna/fstab.tuna:root/fstab.tuna \
-	device/samsung/tuna/ueventd.tuna.rc:root/ueventd.tuna.rc \
-	device/samsung/tuna/media_profiles.xml:system/etc/media_profiles.xml \
-	device/samsung/tuna/media_codecs.xml:system/etc/media_codecs.xml \
-	device/samsung/tuna/gps.conf:system/etc/gps.conf
+	$(DEVICE_FOLDER)/rootdir/init.tuna.rc:root/init.tuna.rc \
+	$(DEVICE_FOLDER)/rootdir/init.tuna.usb.rc:root/init.tuna.usb.rc \
+	$(DEVICE_FOLDER)/rootdir/fstab.tuna:root/fstab.tuna \
+	$(DEVICE_FOLDER)/rootdir/ueventd.tuna.rc:root/ueventd.tuna.rc \
+	$(DEVICE_FOLDER)/media_profiles.xml:system/etc/media_profiles.xml \
+	$(DEVICE_FOLDER)/media_codecs.xml:system/etc/media_codecs.xml \
+	$(DEVICE_FOLDER)/gps.conf:system/etc/gps.conf
 
 # Wifi
 ifneq ($(TARGET_PREBUILT_WIFI_MODULE),)
@@ -97,7 +97,7 @@ PRODUCT_COPY_FILES += \
 	$(TARGET_PREBUILT_WIFI_MODULE):system/lib/modules/bcmdhd.ko
 endif
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
+	$(DEVICE_FOLDER)/bcmdhd.cal:system/etc/wifi/bcmdhd.cal
 
 PRODUCT_PROPERTY_OVERRIDES += \
 	wifi.interface=wlan0
@@ -135,16 +135,16 @@ PRODUCT_PACKAGES += \
 
 # Key maps
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/keymaps/tuna-gpio-keypad.kl:system/usr/keylayout/tuna-gpio-keypad.kl \
-	device/samsung/tuna/keymaps/tuna-gpio-keypad.kcm:system/usr/keychars/tuna-gpio-keypad.kcm \
-	device/samsung/tuna/keymaps/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
-	device/samsung/tuna/keymaps/sec_jack.kcm:system/usr/keychars/sec_jack.kcm \
-	device/samsung/tuna/keymaps/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
-	device/samsung/tuna/keymaps/sii9234_rcp.kcm:system/usr/keychars/sii9234_rcp.kcm
+	$(DEVICE_FOLDER)/keymap/tuna-gpio-keypad.kl:system/usr/keylayout/tuna-gpio-keypad.kl \
+	$(DEVICE_FOLDER)/keymap/tuna-gpio-keypad.kcm:system/usr/keychars/tuna-gpio-keypad.kcm \
+	$(DEVICE_FOLDER)/keymap/sec_jack.kl:system/usr/keylayout/sec_jack.kl \
+	$(DEVICE_FOLDER)/keymap/sec_jack.kcm:system/usr/keychars/sec_jack.kcm \
+	$(DEVICE_FOLDER)/keymap/sii9234_rcp.kl:system/usr/keylayout/sii9234_rcp.kl \
+	$(DEVICE_FOLDER)/keymap/sii9234_rcp.kcm:system/usr/keychars/sii9234_rcp.kcm
 
 # Input device calibration files
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/Melfas_MMSxxx_Touchscreen.idc:system/usr/idc/Melfas_MMSxxx_Touchscreen.idc
+	$(DEVICE_FOLDER)/touchscreen/Melfas_MMSxxx_Touchscreen.idc:system/usr/idc/Melfas_MMSxxx_Touchscreen.idc
 
 # These are the hardware-specific features
 PRODUCT_COPY_FILES += \
@@ -168,12 +168,8 @@ PRODUCT_COPY_FILES += \
 
 # Melfas touchscreen firmware
 PRODUCT_COPY_FILES += \
-	device/samsung/tuna/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
-	device/samsung/tuna/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
-
-# Portrait dock image
-PRODUCT_COPY_FILES += \
-	device/samsung/tuna/dock.png:system/vendor/res/images/dock/dock.png
+	$(DEVICE_FOLDER)/touchscreen/mms144_ts_rev31.fw:system/vendor/firmware/mms144_ts_rev31.fw \
+	$(DEVICE_FOLDER)/touchscreen/mms144_ts_rev32.fw:system/vendor/firmware/mms144_ts_rev32.fw
 
 # Commands to migrate prefs from com.android.nfc3 to com.android.nfc
 PRODUCT_COPY_FILES += $(call add-to-product-copy-files-if-exists,\
@@ -191,9 +187,9 @@ PRODUCT_COPY_FILES += \
 
 # NFCEE access control
 ifeq ($(TARGET_BUILD_VARIANT),user)
-    NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access.xml
+	NFCEE_ACCESS_PATH := $(DEVICE_FOLDER)/nfc/nfcee_access.xml
 else
-    NFCEE_ACCESS_PATH := device/samsung/tuna/nfcee_access_debug.xml
+	NFCEE_ACCESS_PATH := $(DEVICE_FOLDER)/nfc/nfcee_access_debug.xml
 endif
 PRODUCT_COPY_FILES += \
     $(NFCEE_ACCESS_PATH):system/etc/nfcee_access.xml
@@ -202,7 +198,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 	ro.sf.lcd_density=320
 
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.hwui.disable_scissor_opt=true
+	ro.hwui.disable_scissor_opt=true \
 	debug.hwui.render_dirty_regions=false
 
 # GPU producer to CPU consumer not supported

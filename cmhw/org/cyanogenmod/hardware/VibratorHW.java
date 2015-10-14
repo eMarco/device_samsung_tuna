@@ -50,4 +50,3 @@ public class VibratorHW {
         return FileUtils.writeLine(AMP_PATH, String.valueOf(intensity));
     }
 }
- 
