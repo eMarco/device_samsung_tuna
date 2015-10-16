@@ -53,7 +53,7 @@ OMAP_TUNA := true
 COMMON_GLOBAL_CFLAGS += -DOMAP_TUNA
 
 BOARD_KERNEL_BASE := 0x80000000
-BOARD_KERNEL_CMDLINE := androidboot.hardware=$(TARGET_BOOTLOADER_BOARD_NAME)
+BOARD_KERNEL_CMDLINE := androidboot.hardware=$(TARGET_BOOTLOADER_BOARD_NAME) androidboot.selinux=permissive
 # Define kernel config for inline building
 TARGET_KERNEL_CONFIG := slim_tuna_defconfig
 TARGET_KERNEL_SOURCE := kernel/samsung/tuna

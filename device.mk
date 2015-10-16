@@ -210,7 +210,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
 
 # Show selinux status in Settings-About phone
 PRODUCT_PROPERTY_OVERRIDES += \
-	ro.build.selinux=enforcing
+	ro.build.selinux=permissive
 
 #Enable OpenGLESv2
 PRODUCT_PROPERTY_OVERRIDES += \
