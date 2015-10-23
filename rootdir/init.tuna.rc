@@ -5,15 +5,6 @@ on init
 	symlink /sdcard /mnt/sdcard
 	symlink /sdcard /storage/sdcard0
 	
-on post-fs
-	# H264 Encoder Profile setting
-	# 1 - Base Profile
-	# 2 - Main Profile
-	# 8 - High Profile
-	setprop video.h264enc.profile 1
-	
-on post-fs-data
-
 	# create directory for mounting usb drives
 	chmod 0701 /mnt/media_rw
 	mkdir /mnt/media_rw/usbdisk 0775 system system
@@ -24,6 +15,14 @@ on post-fs-data
 	write /sys/kernel/mm/ksm/sleep_millisecs 500
 	write /sys/kernel/mm/ksm/run 1
 
+on post-fs
+	# H264 Encoder Profile setting
+	# 1 - Base Profile
+	# 2 - Main Profile
+	# 8 - High Profile
+	setprop video.h264enc.profile 1
+
+on post-fs-data
 	mkdir /data/smc 0770 drmrpc drmrpc
 	chown drmrpc drmrpc /data/smc/counter.bin
 	chown drmrpc drmrpc /data/smc/storage.bin
