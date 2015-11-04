@@ -34,6 +34,7 @@ PRODUCT_PACKAGES = \
 	camera.tuna \
 	lights.tuna \
 	charger_res_images \
+	libpn544_fw \
 	sensors.tuna \
 	libinvensense_mpl \
 	nfc.tuna \
